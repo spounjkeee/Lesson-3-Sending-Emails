@@ -2,16 +2,17 @@ import os
 from dotenv import load_dotenv
 import smtplib
 
-email_from = "pitonpav@yandex.ru"
+email_from = "devmanorg@yandex.ru"
 my_name = "Павел"
-email_to = "spounjkeee@gmail.com"
+email_to = "devmanorg@yandex.ru"
 friend_name = "Антон"
 website = "https://dvmn.org/profession-ref-program/spounjkeee/B3i0c/"
+subject = "Приглашение!"
 
 letter = """\
 From: {from_email}
 To: {to_email}
-Subject: Приглашение!
+Subject: {subject}
 Content-Type: text/plain; charset="UTF-8";
 
 Привет, %friend_name%! %my_name% приглашает тебя на сайт %website%!
@@ -29,15 +30,13 @@ Content-Type: text/plain; charset="UTF-8";
 Все проекты — они же решение наших задачек — можно разместить на твоём GitHub. Работодатели такое оценят. 
 
 Регистрируйся → %website%  
-На курсы, которые еще не вышли, можно подписаться и получить уведомление о релизе сразу на имейл.""" .format(from_email=email_from, to_email=email_to)
+На курсы, которые еще не вышли, можно подписаться и получить уведомление о релизе сразу на имейл.""" .format(from_email=email_from, to_email=email_to, subject=subject)
 
 letter = letter.replace('%website%', website)
 letter = letter.replace('%friend_name%', friend_name)
 letter = letter.replace('%my_name%', my_name)
 
 letter = letter.encode("UTF-8")
-
-print(letter)
 
 load_dotenv()
 
